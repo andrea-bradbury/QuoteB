@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuoteB.MainPage">
+
+    
+    <StackLayout>
+        <Frame BackgroundColor="#F8B356" Padding="44" CornerRadius="0">
+            <Label Text="Quote of the day" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <Frame BackgroundColor="#FCF2DC">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                  
+                </Grid.ColumnDefinitions>
+
+
+                <Label x:Name="labelQuoteText" Text=" " FontSize="Large" TextColor="#FE9F1F " Grid.Row="0" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
+                <Label x:Name="labelQuoteAuthor" Text="-" FontSize="Medium" TextColor="#FE9F1F " Grid.Row="1" HorizontalOptions="CenterAndExpand"  />
+                <Button x:Name="buttonRandomGenerate" Text="GET A QUOTE" TextColor="White"  BackgroundColor="#FE9F1F" BorderColor="#FF5733"  FontSize="Body" Grid.Row="2" Padding="30,20,30,20" Clicked="buttonRandomGenerate_Clicked" > </Button>
+        
+            </Grid>
+        </Frame>
+        <Frame BackgroundColor="#FCF2DC">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                  
+                </Grid.ColumnDefinitions>
+
+                <Label x:Name="labelWriteYourOwnHeading" Text="Write your own quote" FontSize="Title" TextColor="#900C3F" HorizontalOptions="CenterAndExpand" Grid.Row="0" Grid.ColumnSpan="2"/>
+                <Label x:Name="labelEnterQuote" Text="Quote: " FontSize="Body" TextColor="#581845" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="0"/>
+                <Entry x:Name="entryQuote" Text="C'est la vie" FontSize="Body" TextColor="#581845" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"/>
+                <Label x:Name="labelEnterAuthor" Text="Author: " FontSize="Body" TextColor="#581845" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="2" Grid.Column="0"/>
+                <Entry x:Name="entryAuthor" Text="B*Witched" FontSize="Body" TextColor="#581845" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1"/>
+                <Button x:Name="buttonSaveQuote" Text="SAVE" TextColor="White" BackgroundColor="#900C3F" FontSize="Body" Grid.Row="3" Grid.Column="1" HorizontalOptions="End"  Padding="30,20,30,20" Clicked="buttonSaveQuote_Clicked" > </Button>
+        
+
+            </Grid>
+        </Frame>
+        
+    </StackLayout>
+
+</ContentPage>

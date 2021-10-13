@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="QuoteB.FavouritesPage">
+
+    <ContentPage.Content>
+        <StackLayout>
+        <Frame BackgroundColor="#F8B356" Padding="44" CornerRadius="0">
+            <Label Text="Quote of the day" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <Frame BackgroundColor="#FCF2DC">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    
+
+                </Grid.ColumnDefinitions>
+
+
+                <Label x:Name="labelFavouritesHeading" Text="Favourite Quotes" FontSize="Large" TextColor="#FE9F1F " Grid.Row="0"  HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
+                <Label x:Name="labelOneQuoteAuthor" Text=" " FontSize="Medium" TextColor="#FE9F1F " Grid.Row="1"  HorizontalOptions="CenterAndExpand"  />
+
+
+
+                <Button x:Name="buttonBack" Text="BACK" TextColor="White"  BackgroundColor="#FE9F1F" BorderColor="#FF5733"  FontSize="Body" Grid.Row="2" Padding="30,20,30,20" > </Button>
+        
+            </Grid>
+        </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
