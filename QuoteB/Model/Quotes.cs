@@ -16,14 +16,17 @@ namespace QuoteB.Model
         //The person who said the saying
         public string Author { get; set; }
 
-        
+
+        //Whether the quote is saved to favourites 
+        public bool Favourite { get; set; }
 
 
         //Contructor
-        public Quotes(string saying, string author)
+        public Quotes(string saying, string author, bool favourite)
         {
             Saying = saying;
             Author = author;
+            Favourite = favourite;
             
         }
     }

@@ -41,6 +41,9 @@ namespace QuoteB
 
                 labelQuoteAuthor.Text = quote.Author;
 
+
+                switchFavourite.IsToggled = quote.Favourite;
+
             }
             catch
             {
@@ -59,10 +62,12 @@ namespace QuoteB
 
             string authorInput = entryAuthor.Text;
 
+            bool isFavourite = switchFavourite.IsToggled;
+
             Console.WriteLine("Checking inputs are being stored to variables");
 
 
-            Quotes Model = new Quotes(quoteInput, authorInput);
+            Quotes Model = new Quotes(quoteInput, authorInput, isFavourite);
 
             Console.WriteLine("Checking object instantiate");
 
