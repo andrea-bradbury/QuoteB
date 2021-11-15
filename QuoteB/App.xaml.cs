@@ -22,6 +22,8 @@ namespace QuoteB
             //Try open the file of Quotes and save contents to objects
 
             managingQuotes.readFromFile();
+            
+
         }
 
         protected override void OnSleep()
@@ -29,6 +31,8 @@ namespace QuoteB
             //Save all Quote objects back to file
 
             managingQuotes.saveToFile();
+
+            Console.WriteLine("Checking saving to file");
         }
 
         protected override void OnResume()

@@ -16,6 +16,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -24,11 +25,13 @@
 
 
                 <Label x:Name="labelQuoteText" Text=" " FontSize="Large" TextColor="#FE9F1F " Grid.Row="0" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
-                <Label x:Name="labelQuoteAuthor" Text="-" FontSize="Medium" TextColor="#FE9F1F " Grid.Row="1" HorizontalOptions="CenterAndExpand"  />
-                 <Label x:Name="labelFavourites" Text="Add to favourites" FontSize="Small" TextColor="#FE9F1F " Grid.Row="2" HorizontalOptions="CenterAndExpand"  />
-                <Switch x:Name="switchFavourite"  IsToggled="false" Grid.Row="3" HorizontalOptions="CenterAndExpand"  />
+                <Label x:Name="labelQuoteAuthor" Text=" " FontSize="Medium" TextColor="#FE9F1F " Grid.Row="1" HorizontalOptions="CenterAndExpand"  />
+                <Label x:Name="labelFavourites" Text="Add to favourites" FontSize="Small" TextColor="#FE9F1F " Grid.Row="2" HorizontalOptions="CenterAndExpand"  />
+                <Switch x:Name="switchFavourite"  IsToggled="false" Grid.Row="3" HorizontalOptions="CenterAndExpand" Toggled="switchFavourite_Toggled" />
                 <Button x:Name="buttonRandomGenerate" Text="GET A QUOTE" TextColor="White"  BackgroundColor="#FE9F1F" BorderColor="#FF5733"  FontSize="Body" Grid.Row="4" Padding="30,20,30,20" Clicked="buttonRandomGenerate_Clicked" > </Button>
+                <Button x:Name="buttonViewFavourites" Text="VIEW FAVOURITES" TextColor="White"  BackgroundColor="#FF5773" BorderColor="#FF5773"  FontSize="Body" Grid.Row="5" Padding="30,20,30,20" Clicked="buttonViewFavourites_Clicked"> </Button>
                
+
             </Grid>
         </Frame>
         <Frame BackgroundColor="#FCF2DC">

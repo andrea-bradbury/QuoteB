@@ -11,18 +11,50 @@ using QuoteB.Model;
 using Xamarin.Essentials;
 
 namespace QuoteB
-{
+{ 
+
     public partial class MainPage : ContentPage
     {
         ManagingQuotes managingQuotes;
 
+       
+
+
+
         public MainPage()
         {
+
             InitializeComponent();
 
             App app = (App)Application.Current;
 
             managingQuotes = app.managingQuotes;
+
+
+
+            //Display a random quote on open if there is one
+            try
+            {
+                Quotes quote = managingQuotes.GetRandomQuote();
+
+
+                labelQuoteText.Text = quote.Saying;
+
+
+                labelQuoteAuthor.Text = quote.Author;
+
+
+                switchFavourite.IsToggled = quote.Favourite;
+
+            }
+            catch
+            {
+                switchFavourite.IsVisible = false;
+                labelFavourites.IsVisible = false;
+
+                return;
+            }
+
         }
 
 
@@ -40,6 +72,9 @@ namespace QuoteB
 
 
                 labelQuoteAuthor.Text = quote.Author;
+
+                switchFavourite.IsVisible = true;
+                labelFavourites.IsVisible = true;
 
 
                 switchFavourite.IsToggled = quote.Favourite;
@@ -67,6 +102,7 @@ namespace QuoteB
             Console.WriteLine("Checking inputs are being stored to variables");
 
 
+
             Quotes Model = new Quotes(quoteInput, authorInput, isFavourite);
 
             Console.WriteLine("Checking object instantiate");
@@ -74,12 +110,42 @@ namespace QuoteB
 
             managingQuotes.AddToList(Model);
 
+            managingQuotes.UpdateFavourites(Model);
 
-            DisplayAlert($"{Model.Saying}, {Model.Author}", "This quote has been added.", "OK");
+
+            DisplayAlert($"{Model.Saying}, {Model.Author}, Favourited [{Model.Favourite}]", "This quote has been added.", "OK");
 
 
             //Need to add in clears for the entry fields
 
+        }
+
+        /// Make a quote a favourite
+        
+        void switchFavourite_Toggled(System.Object sender, Xamarin.Forms.ToggledEventArgs e)
+        {
+            
+
+            //quotes(labelQuoteText.Text, labelQuoteAuthor.Text, switchFavourite.IsToggled);
+
+            //managingQuotes.UpdateFavourites();
+        }
+
+
+        /// Open new page for viewing favourited quotes
+        
+        async void buttonViewFavourites_Clicked(System.Object sender, System.EventArgs e)
+        {
+
+            FavouritesPage favouritesPage = new FavouritesPage();
+
+            await Navigation.PushModalAsync(favouritesPage);
+
+            List<Model.Quotes> listOfFavourites = await managingQuotes.ReturnFavouriteQuotes();
+
+            await favouritesPage.populateFavouritesUI(listOfFavourites);
+
+           
         }
 
     }

@@ -26,20 +26,23 @@ namespace QuoteB
         // Collects all Quotes objects saved as list
 
         List<Quotes> listOfQuoteObjects = new List<Quotes>();
-        
-        
+
+
+        // Collects all 'favourited' Quotes objects saved as list
+
+        List<Quotes> listOfFavouriteQuoteObjects;
+
+
 
 
         ///Takes input of a Quote object and adds to a list.
 
         public void AddToList(Quotes quoteObject)
         {
-            Console.WriteLine("Checking making it to Add to List function");
+            
 
             if (listOfQuoteObjects == null)
             {
-                List<Quotes> listOfQuoteObjects = new List<Quotes>();
-
                 //Add quote to list
                 listOfQuoteObjects.Add(quoteObject);
             }
@@ -48,9 +51,7 @@ namespace QuoteB
                 //Add quote to list
                 listOfQuoteObjects.Add(quoteObject);
             }
-            
-
-            Console.WriteLine("Checking adding to list function");
+           
 
 
         }
@@ -60,16 +61,10 @@ namespace QuoteB
 
         public Quotes GetRandomQuote()
         {
-            Console.WriteLine("Checking making it to random function");
 
             Random rnd = new Random();
 
-            Console.WriteLine("Checking making random object");
-
-
             Quotes randomQuote = listOfQuoteObjects[rnd.Next(0, listOfQuoteObjects.Count)];
-
-            Console.WriteLine("Checking random quote object is being picked from list" + randomQuote.ToString());
 
 
             return randomQuote;
@@ -157,9 +152,19 @@ namespace QuoteB
 
                 //Turns file content into Quotes objects and puts them in list
 
-                listOfQuoteObjects = JsonConvert.DeserializeObject<List<Model.Quotes>>(loadedContent);
+                if (loadedContent != null)
+                {
+                    listOfQuoteObjects = JsonConvert.DeserializeObject<List<Model.Quotes>>(loadedContent);
 
-                Console.WriteLine("Checking deserialising into objects");
+                    Console.WriteLine("Checking deserialising into objects");
+
+                }
+                else
+                {
+                    List<Quotes> listOfQuoteObjects = new List<Quotes>();
+                }
+
+                
 
                
 
@@ -172,6 +177,30 @@ namespace QuoteB
                 return false;
             }
 
+        }
+
+
+        /// For keeping a list of favourites current in the app
+        public void UpdateFavourites(Quotes quote)
+        {
+            Console.WriteLine("Checking making it to Favourites function");
+
+            
+            if (quote.Favourite == true)
+            {
+                //Add quote to favourites list
+                listOfFavouriteQuoteObjects.Add(quote);
+            }
+
+            Console.WriteLine("Checking adding to favourites list function");
+        }
+
+
+
+
+        public async Task<List<Model.Quotes>> ReturnFavouriteQuotes()
+        {
+            return listOfFavouriteQuoteObjects;
         }
     }
 }
