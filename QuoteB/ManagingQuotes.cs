@@ -30,7 +30,7 @@ namespace QuoteB
 
         // Collects all 'favourited' Quotes objects saved as list
 
-        List<Quotes> listOfFavouriteQuoteObjects;
+        List<Quotes> listOfFavouriteQuoteObjects = new List<Quotes>();
 
 
 
@@ -43,6 +43,8 @@ namespace QuoteB
 
             if (listOfQuoteObjects == null)
             {
+                List<Quotes> listOfQuoteObjects = new List<Quotes>();
+
                 //Add quote to list
                 listOfQuoteObjects.Add(quoteObject);
             }

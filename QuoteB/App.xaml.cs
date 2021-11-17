@@ -37,7 +37,7 @@ namespace QuoteB
 
         protected override void OnResume()
         {
-
+            managingQuotes.readFromFile();
         }
     }
 }

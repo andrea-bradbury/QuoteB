@@ -15,14 +15,13 @@ namespace QuoteB
 
     public partial class MainPage : ContentPage
     {
-        ManagingQuotes managingQuotes;
 
-       
-
+        ManagingQuotes managingQuotes = new ManagingQuotes();
 
 
         public MainPage()
         {
+            
 
             InitializeComponent();
 
@@ -54,6 +53,9 @@ namespace QuoteB
 
                 return;
             }
+
+
+            
 
         }
 
@@ -119,6 +121,7 @@ namespace QuoteB
             //Need to add in clears for the entry fields
 
         }
+
 
         /// Make a quote a favourite
         
