@@ -11,6 +11,8 @@ namespace QuoteB
     /// It collects the list of Quotes objects
     /// Generated a random Quotes object from the list
     /// And also handles reading and writing to json files.
+    
+    
 
     public class ManagingQuotes
     {
@@ -154,21 +156,20 @@ namespace QuoteB
 
                 //Turns file content into Quotes objects and puts them in list
 
-                if (loadedContent != null)
+                if (loadedContent == "null")
                 {
-                    listOfQuoteObjects = JsonConvert.DeserializeObject<List<Model.Quotes>>(loadedContent);
-
-                    Console.WriteLine("Checking deserialising into objects");
+                    List<Quotes> listOfQuoteObjects = new List<Quotes>();
 
                 }
                 else
                 {
-                    List<Quotes> listOfQuoteObjects = new List<Quotes>();
+                    listOfQuoteObjects = JsonConvert.DeserializeObject<List<Model.Quotes>>(loadedContent);
+
+                    Console.WriteLine("Checking deserialising into objects");
+                    
                 }
 
                 
-
-               
 
                 return true;
             }

@@ -31,21 +31,13 @@ namespace QuoteB
 
         public async Task<bool> populateFavouritesUI(List<Model.Quotes> listOfFavourites)
         {
-            List<Model.Quotes> listOfTenFavourites = new List<Model.Quotes>();
-
-            int lengthOfList = listOfFavourites.Count();
+            
 
             try
             {
+              
                
-                for (int i = 0; i < 11; i++)
-                {
-                   listOfFavourites.Add(listOfTenFavourites[i]);
-                
-                }
-                
-               
-                if (listOfTenFavourites.Count == 0)
+                if (listOfFavourites.Count == 0)
                 {
                     //Create vertical stack
                     StackLayout stack = new StackLayout()
@@ -72,7 +64,7 @@ namespace QuoteB
                     
 
 
-                    foreach (Model.Quotes quote in listOfTenFavourites)
+                    foreach (Model.Quotes quote in listOfFavourites)
                     {
                         //Create vertical stack
                         StackLayout stack = new StackLayout()

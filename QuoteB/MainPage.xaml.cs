@@ -18,6 +18,7 @@ namespace QuoteB
 
         ManagingQuotes managingQuotes = new ManagingQuotes();
 
+        Quotes displayedQuote;
 
         public MainPage()
         {
@@ -67,19 +68,21 @@ namespace QuoteB
 
             try
             {
-                Quotes quote = managingQuotes.GetRandomQuote();
+                displayedQuote = managingQuotes.GetRandomQuote();
 
 
-                labelQuoteText.Text = quote.Saying;
+                labelQuoteText.Text = displayedQuote.Saying;
 
 
-                labelQuoteAuthor.Text = quote.Author;
+                labelQuoteAuthor.Text = displayedQuote.Author;
 
                 switchFavourite.IsVisible = true;
                 labelFavourites.IsVisible = true;
 
 
-                switchFavourite.IsToggled = quote.Favourite;
+                switchFavourite.IsToggled = displayedQuote.Favourite;
+
+                
 
             }
             catch
@@ -115,7 +118,7 @@ namespace QuoteB
             managingQuotes.UpdateFavourites(Model);
 
 
-            DisplayAlert($"{Model.Saying}, {Model.Author}, Favourited [{Model.Favourite}]", "This quote has been added.", "OK");
+            DisplayAlert($"{Model.Saying}, {Model.Author}", "This quote has been added.", "OK");
 
 
             //Need to add in clears for the entry fields
@@ -127,11 +130,16 @@ namespace QuoteB
         
         void switchFavourite_Toggled(System.Object sender, Xamarin.Forms.ToggledEventArgs e)
         {
-            
+            if (displayedQuote.Favourite == false)
+            {
+                displayedQuote.Favourite = true;
+            }
+            else
+            {
+                displayedQuote.Favourite = false;
+            }
 
-            //quotes(labelQuoteText.Text, labelQuoteAuthor.Text, switchFavourite.IsToggled);
-
-            //managingQuotes.UpdateFavourites();
+            managingQuotes.UpdateFavourites(displayedQuote);
         }
 
 
