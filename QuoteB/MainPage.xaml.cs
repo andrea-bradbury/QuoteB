@@ -52,13 +52,15 @@ namespace QuoteB
                 switchFavourite.IsVisible = false;
                 labelFavourites.IsVisible = false;
 
-                return;
             }
 
+            managingQuotes.UpdateFavourites();
 
-            
+
 
         }
+
+        
 
 
         ///Collects a random quote from the list of quote objects and displays in UI.
@@ -96,32 +98,37 @@ namespace QuoteB
 
         ///Take the quote and author input and create Quotes object.
         
-        void buttonSaveQuote_Clicked(System.Object sender, System.EventArgs e)
+        async void buttonSaveQuote_Clicked(System.Object sender, System.EventArgs e)
         {
             string quoteInput = entryQuote.Text;
 
             string authorInput = entryAuthor.Text;
 
-            bool isFavourite = switchFavourite.IsToggled;
+            
 
             Console.WriteLine("Checking inputs are being stored to variables");
 
 
 
-            Quotes Model = new Quotes(quoteInput, authorInput, isFavourite);
+            Quotes Model = new Quotes(quoteInput, authorInput, false);
 
             Console.WriteLine("Checking object instantiate");
 
 
             managingQuotes.AddToList(Model);
 
-            managingQuotes.UpdateFavourites(Model);
+            await DisplayAlert($"{Model.Saying}, {Model.Author}", "This quote has been added.", "OK");
 
 
-            DisplayAlert($"{Model.Saying}, {Model.Author}", "This quote has been added.", "OK");
+            //Clear the entry fields
 
+            entryQuote.Text = " ";
+            entryAuthor.Text = " ";
 
-            //Need to add in clears for the entry fields
+            await managingQuotes.saveToFile();
+            await managingQuotes.readFromFile();
+
+           
 
         }
 
@@ -130,6 +137,8 @@ namespace QuoteB
         
         void switchFavourite_Toggled(System.Object sender, Xamarin.Forms.ToggledEventArgs e)
         {
+            //Note for Andrea: this function randomly fires sometimes when generate quote button is clicked??
+
             if (displayedQuote.Favourite == false)
             {
                 displayedQuote.Favourite = true;
@@ -139,7 +148,7 @@ namespace QuoteB
                 displayedQuote.Favourite = false;
             }
 
-            managingQuotes.UpdateFavourites(displayedQuote);
+            managingQuotes.UpdateFavourites();
         }
 
 

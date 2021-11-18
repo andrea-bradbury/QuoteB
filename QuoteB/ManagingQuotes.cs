@@ -184,17 +184,28 @@ namespace QuoteB
 
 
         /// For keeping a list of favourites current in the app
-        public void UpdateFavourites(Quotes quote)
+        public void UpdateFavourites()
         {
             Console.WriteLine("Checking making it to Favourites function");
 
-            
-            if (quote.Favourite == true)
-            {
-                //Add quote to favourites list
-                listOfFavouriteQuoteObjects.Add(quote);
-            }
+            listOfFavouriteQuoteObjects.Clear();
 
+            //Add quote to favourites list
+            foreach (Quotes quote in listOfQuoteObjects)
+            {
+                
+
+                if (quote.Favourite == true )
+                {
+                    listOfFavouriteQuoteObjects.Add(quote);
+
+                    Console.WriteLine(listOfFavouriteQuoteObjects);
+                }
+
+                
+            }
+            
+           
             Console.WriteLine("Checking adding to favourites list function");
         }
 

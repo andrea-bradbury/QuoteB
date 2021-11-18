@@ -33,6 +33,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
+                    
                   
                 </Grid.RowDefinitions>
 
@@ -44,7 +45,7 @@
 
                 <!--Stack layout of quotes  -->
 
-                <StackLayout x:Name="stackFavouriteQuotes" HeightRequest="150" Grid.ColumnSpan="2" Grid.Row="1" Orientation="Vertical" >
+                <StackLayout x:Name="stackFavouriteQuotes" HeightRequest="150" Grid.ColumnSpan="2" Grid.Row="1" Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
                 </StackLayout>
 
                 </Grid>

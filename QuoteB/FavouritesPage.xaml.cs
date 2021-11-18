@@ -85,7 +85,7 @@ namespace QuoteB
 
                         Label labelAuthor = new Label()
                         {
-                            Text = quote.Author,
+                            Text = $"  - {quote.Author}",
                             HorizontalOptions = LayoutOptions.EndAndExpand,
                             TextColor = Color.DarkOrchid,
                         };
